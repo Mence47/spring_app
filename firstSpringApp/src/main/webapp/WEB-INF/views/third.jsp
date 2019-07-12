@@ -11,7 +11,7 @@
         <form action="result">
             <fieldset>
                 <legend>Введите отчество:</legend>
-                <input type="text" name="middlename"><br>
+                <input type="text" name="middle"><br>
                 <input type="submit" value="Submit">
             </fieldset>
         </form>

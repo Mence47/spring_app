@@ -11,7 +11,7 @@
         <form action="last">
             <fieldset>
                 <legend>Введите имя:</legend>
-                <input type="text" name="firstname"><br>
+                <input type="text" name="name"><br>
                 <input type="submit" value="Submit">
             </fieldset>
         </form>

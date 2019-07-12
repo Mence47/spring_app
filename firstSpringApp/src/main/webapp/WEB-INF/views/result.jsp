@@ -8,11 +8,9 @@
         <title>Home</title>
     </head>
     <body>
-        <div>
-            <p>Hello <%= session.getAttribute("last")%>
-                    <%= session.getAttribute("name")%>
-                    <%= session.getAttribute("middle")%>
-            </p>
-        </div>
+        <p>Hello ${last} ${name} ${middle}</p>
+        <form action="home">
+            <input type="submit" value="Go to main page" />
+        </form>
     </body>
 </html>
