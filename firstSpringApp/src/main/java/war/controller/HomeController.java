@@ -16,25 +16,25 @@ import org.springframework.ui.Model;
 public class HomeController {
 
 	@RequestMapping(value={"/", "/home"})
-	public ModelAndView home(Model model) throws IOException{
+	public ModelAndView home(HttpServletRequest rq) throws IOException{
 		return new ModelAndView("home");
 	}
 
 	@RequestMapping(value="/last")
-	public ModelAndView last(Model model, @RequestParam("name") String name) throws IOException {
-		model.addAttribute("name", name);
+	public ModelAndView last(HttpServletRequest rq, @RequestParam("name") String name) throws IOException {
+		rq.getSession().setAttribute("name", name);
         return new ModelAndView("second");
 	}
 
 	@RequestMapping(value="/middle")
-	public ModelAndView middle(Model model, @RequestParam("last") String name) throws IOException {
-		model.addAttribute("last", name);
+	public ModelAndView middle(HttpServletRequest rq, @RequestParam("last") String name) throws IOException {
+		rq.getSession().setAttribute("last", name);
         return new ModelAndView("third");
 	}
 
 	@RequestMapping(value="/result")
-	public ModelAndView result(Model model, @RequestParam("middle") String name) throws IOException {
-		model.addAttribute("middle", name);
+	public ModelAndView result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
+		rq.getSession().setAttribute("middle", name);
         return new ModelAndView("result");
 	}
 }
