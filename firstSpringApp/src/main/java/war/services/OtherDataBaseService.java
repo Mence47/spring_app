@@ -1,5 +1,7 @@
 package war.services;
 
+import war.model.*;
+
 public class OtherDataBaseService implements DataBaseService {
 
     @Override

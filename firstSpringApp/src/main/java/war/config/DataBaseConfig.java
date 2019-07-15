@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.*;
+import war.model.User;
 
 @Configuration
 @ComponentScan(basePackages="war")
@@ -19,5 +20,10 @@ public class DataBaseConfig {
         dataSource.setPassword("sa");
 
         return dataSource;
+    }
+
+    @Bean
+    public User makeUser() {
+        return new User();
     }
 }
