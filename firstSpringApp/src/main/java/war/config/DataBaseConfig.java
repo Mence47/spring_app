@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.*;
-import war.model.User;
+import war.model.UserDto;
 
 @Configuration
 @ComponentScan(basePackages="war")
@@ -23,7 +23,7 @@ public class DataBaseConfig {
     }
 
     @Bean
-    public User makeUser() {
-        return new User();
+    public UserDto makeUser() {
+        return new UserDto();
     }
 }

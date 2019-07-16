@@ -1,6 +1,6 @@
 package war.services;
 
-import war.model.User;
+import war.model.UserDto;
 
 public interface DataBaseService {
 

@@ -1,6 +1,6 @@
 package war.model;
 
-public class User {
+public class UserDto {
 
     private String name;
     private String last;

@@ -8,7 +8,7 @@
         <title>Last</title>
     </head>
     <body>
-        <form action="result">
+        <form action="result" method="POST">
             <fieldset>
                 <legend>Введите отчество:</legend>
                 <input type="text" name="middle"><br>

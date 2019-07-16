@@ -13,10 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import org.springframework.ui.Model;
 
-import war.model.User;
+import war.model.UserDto;
 
 @Controller
 public class HomeController {
@@ -24,8 +27,9 @@ public class HomeController {
 	@Autowired
 	// @Qualifier("other")
 	private DataBaseService service;
+
 	@Autowired
-	User user;
+	UserDto user;
 
 	@RequestMapping(value={"/", "/home"})
 	public ModelAndView home(HttpServletRequest rq) throws IOException{
@@ -47,10 +51,31 @@ public class HomeController {
 	}
 
 	@RequestMapping(value="/result")
+	// @ResponseBody
 	public ModelAndView result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
 		rq.getSession().setAttribute("middle", name);
 		user.setMiddle(name);
 		service.putData();
         return new ModelAndView("result");
 	}
+
+	/*****	ModelMapper
+			jackson 	****/
+
+	// @RequestMapping(value="/result")
+	// @ResponseBody
+	// public UserDto result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
+	// 	rq.getSession().setAttribute("middle", name);
+	// 	user.setMiddle(name);
+	// 	service.putData();
+    //     return user;
+	// }
+
+	// @RequestMapping(value="/result", produces = "application/json")
+	// public @ResponseBody String result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
+	// 	rq.getSession().setAttribute("middle", name);
+	// 	user.setMiddle(name);
+	// 	service.putData();
+    //     return "Hello world";
+	// }
 }
