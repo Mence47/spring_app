@@ -18,8 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.ui.Model;
+import com.fasterxml.jackson.annotation.JsonView;
 
-import war.model.UserDto;
+import war.model.*;
 
 @Controller
 public class HomeController {
@@ -50,14 +51,14 @@ public class HomeController {
         return new ModelAndView("third");
 	}
 
-	@RequestMapping(value="/result")
-	// @ResponseBody
-	public ModelAndView result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
-		rq.getSession().setAttribute("middle", name);
-		user.setMiddle(name);
-		service.putData();
-        return new ModelAndView("result");
-	}
+	// @RequestMapping(value="/result")
+	// // @ResponseBody
+	// public ModelAndView result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
+	// 	rq.getSession().setAttribute("middle", name);
+	// 	user.setMiddle(name);
+	// 	service.putData();
+    //     return new ModelAndView("result");
+	// }
 
 	/*****	ModelMapper
 			jackson 	****/
@@ -71,11 +72,12 @@ public class HomeController {
     //     return user;
 	// }
 
-	// @RequestMapping(value="/result", produces = "application/json")
-	// public @ResponseBody String result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
-	// 	rq.getSession().setAttribute("middle", name);
-	// 	user.setMiddle(name);
-	// 	service.putData();
-    //     return "Hello world";
-	// }
+	@RequestMapping(value="/result", produces = "application/json")
+	// @JsonView(war.model.StringResponse.class)
+	public @ResponseBody UserDto result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
+		rq.getSession().setAttribute("middle", name);
+		user.setMiddle(name);
+		service.putData();
+        return user;
+	}
 }
