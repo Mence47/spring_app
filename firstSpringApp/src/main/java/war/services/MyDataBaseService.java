@@ -12,10 +12,11 @@ public class MyDataBaseService implements DataBaseService {
     private UserDto user;
 
     @Override
-    public void putData() {
+    public UserDto putData() {
         jdbcTemp.update(
             "insert into people (first, last, middle) values (?, ?, ?)",
             user.getName(), user.getLast(), user.getMiddle());
+        return user;
         // System.out.println(user.getLast() + " " + user.getName() + " " + user.getMiddle());
     }
 

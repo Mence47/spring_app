@@ -10,5 +10,5 @@ public class OtherDataBaseService implements DataBaseService {
     }
 
     @Override
-    public void putData(){}
+    public UserDto putData(){ return null;}
 }

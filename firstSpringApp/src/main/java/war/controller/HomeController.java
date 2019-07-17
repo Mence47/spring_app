@@ -63,21 +63,11 @@ public class HomeController {
 	/*****	ModelMapper
 			jackson 	****/
 
-	// @RequestMapping(value="/result")
-	// @ResponseBody
-	// public UserDto result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
-	// 	rq.getSession().setAttribute("middle", name);
-	// 	user.setMiddle(name);
-	// 	service.putData();
-    //     return user;
-	// }
-
 	@RequestMapping(value="/result", produces = "application/json")
 	// @JsonView(war.model.StringResponse.class)
 	public @ResponseBody UserDto result(HttpServletRequest rq, @RequestParam("middle") String name) throws IOException {
 		rq.getSession().setAttribute("middle", name);
 		user.setMiddle(name);
-		service.putData();
-        return user;
+        return service.putData();
 	}
 }
